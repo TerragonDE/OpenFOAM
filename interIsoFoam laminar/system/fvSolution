@@ -29,9 +29,9 @@ solvers
         writeIsoFaces   false;                    // Specifies whether to write isosurface faces or not
         reconstructionScheme plicRDF;             // Specifies the reconstruction scheme for isoAlpha
 
-        nAlphaCorr      1; // Specifies the number of alpha corrections
-        nAlphaSubCycles 1; // Specifies the number of alpha sub-cycles
-        cAlpha          1; // Specifies the correction factor for alpha
+        nAlphaCorr      1;                         // Specifies the number of alpha corrections
+        nAlphaSubCycles 1;                         // Specifies the number of alpha sub-cycles
+        cAlpha          1;                         // Specifies the correction factor for alpha
     }
 
     p_rgh
@@ -81,22 +81,20 @@ solvers
 // PIMPLE settings (Pressure-Implicit with Splitting of Operators)
 PIMPLE                
 {
-    momentumPredictor   no;
-    nOuterCorrectors    1;
-    nCorrectors         3;
-    nNonOrthogonalCorrectors 0;
+    momentumPredictor   no;               // typically set to off for some ﬂows, including low Reynolds number and multiphase.
+    nOuterCorrectors    1;                // enables looping over the entire system of equations within on time step, representing the total number of times the system is solved; typically set to 1, replicating the PISO algorithm
+    nCorrectors         3;                //nCorrectors 3; this is the pressure correction step. so it solves the pressure 3 times. 
+    nNonOrthogonalCorrectors 0;           //default 0, may be 2, nNonOrthogonalCorrectors is number of pressure equation steps (zero means one step)
 }
 
 
 
-// Relaxation factors control the under-relaxation of the solution. 
-// This is a technique used for improving the stability of a calculation, 
-// especially in solving steady-state analysis, where the first iterations are critical.
-relaxationFactors            
+
+relaxationFactors                           // Relaxation factors control the under-relaxation of the solution. For improving the stability of a calculation, especially in solving steady-state analysis, where the first iterations are critical.     
 {
     equations
     {
-        ".*"                1;                // Specifies a relaxation factor of 1 for all equations.
+        ".*"                1;              // Specifies a relaxation factor of 1 for all equations. A transient incompressible solver, just uses under-relaxation to ensure matrix diagonal equality, typical of transient simulations.
     }
 }
 
