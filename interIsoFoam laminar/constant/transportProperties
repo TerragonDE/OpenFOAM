@@ -32,7 +32,8 @@ air
     rho             1;
 }
 
-sigma           0.07;               // Specifies the interfacial tension (sigma) between the water and air phases in N/m.
+sigma           0.072;              // Specifies the interfacial tension (sigma) between the water and air phases in N/m.
+                                    // Once you have a different system like water-oil you have to use measured values for this system.
 
 
 // ************************************************************************* //
