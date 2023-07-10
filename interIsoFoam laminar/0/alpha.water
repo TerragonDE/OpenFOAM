@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      alpha.water;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;                // Sets the internal (initial) field of the variable to a uniform value of 0. This means that the entire domain initially has a value of 0 for this variable.
+
+boundaryField
+{
+    inlet
+    
+    {
+        type            inletOutlet;       // Specifies the type of boundary condition for the "inlet" as an "inletOutlet" type. This type allows the flow to act as both an inlet and an outlet.
+        inletValue      uniform 1;         // Sets the inlet value to a uniform value of 1. This is the value assigned to the variable at the "inlet" boundary.
+    }
+
+    outlet
+    {
+        type           zeroGradient;        // Kein Gradient (freier Austritt)
+    }
+
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+
+// ************************************************************************* //
