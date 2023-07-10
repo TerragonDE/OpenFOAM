@@ -23,15 +23,15 @@ startTime       0;                     // only if startTime is set above
 stopAt          endTime;        
 endTime         30;                    // only if endTime is set above
 
-deltaT          0.001;                 // Time step of the simulation
+deltaT          0.001;                 // Time step of the simulation. Time step can be too large to stay stable. As the Courant number grows, and with a fixed mesh, all that can change is the timestep. Try limiting the value that the courant number can reach, in essence setting a maximum timestep value, for stability.
 maxDeltaT       0.001;                 // not in v10 book, if adjustTimeStep is on (below)
 
 writeControl    adjustableRunTime;
 writeInterval   0.05;
 purgeWrite      0;                    // 0 = no folders will be overwritten
 
-writeFormat     ascii;                // ASCII format, written to writePrecision signiﬁcant ﬁgures.
-writePrecision  6;                    // Integer used in conjunction with writeFormat described above, 6 by default.
+writeFormat     ascii;                // ascii or binary , written to writePrecision signiﬁcant ﬁgures. if your mesh has very small cells the dimensions may not not sufficiently maintained using the default ascii precision.
+writePrecision  6;                    // Integer used in conjunction with writeFormat described above, 6 by default. if you have mesh with small elements precision 6 is not enough (and this is usual reason for this non-orthogonality issues after renumberMesh)
 
 writeCompression off;                 // ﬁles are compressed with gzip when written: on/off (yes/no, true/false)
 
@@ -40,7 +40,7 @@ timePrecision   6;                    // Integer used in conjunction with timeFo
 
 runTimeModifiable yes;                // Switch for whether dictionaries, e.g.controlDict, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation.
 
-adjustTimeStep  on;                    // Switch used by some solvers to adjust the time step during the simulation, usually according to maxCo.
+adjustTimeStep  on;                    // Switch used by some solvers to adjust the time step during the simulation, usually according to maxCo. Large Courant numbers mean the time step ist too large. Please keep in mind: Complex geometry = many nodes = small element sizes = small time for traversing an element = high Courant number.
 maxCo           1;                     // Maximum Courant number, e.g. 0.5, maxCo is a more general parameter that applies to various flow variables, including velocity, pressure, and scalar fields.
 maxAlphaCo      1;                     // not in v10 book, maxAlphaCo is specifically used for the phase fraction (alpha) transport equation. It limits the time step size based on the change in the phase fraction within a single time step.
 
