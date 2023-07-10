@@ -1,5 +1,8 @@
-# OpenFOAM
-Sample OpenFOAM Cases
+# OpenFOAM for Beginners
+Here you find some sample cases for the Series on my YouTube Channel:
+- https://www.youtube.com/watch?v=yDRQf7fcAlg (1/4)
+- https://www.youtube.com/watch?v=mnj0UcPItu8 (2/4)
+- https://www.youtube.com/watch?v=E0AzNABWrow (3/4)
 
 ### Workflow
 1. Create a Geometry in FreeCAD or any other CAD Application -> export .STP file
