@@ -1,14 +1,11 @@
-# OpenFOAM for Beginners
-Here you find some sample cases for the Series on my YouTube Channel:
-- https://www.youtube.com/watch?v=yDRQf7fcAlg (1/4)
-- https://www.youtube.com/watch?v=mnj0UcPItu8 (2/4)
-- https://www.youtube.com/watch?v=E0AzNABWrow (3/4)
+# OpenFOAM Workflow Tutorial
+Here you find some sample cases for the Series on my YouTube Channel.
 
 ### Workflow
-1. Create a Geometry in FreeCAD or any other CAD Application -> export .STP file
-2. Generate a Mesh in Salome by importing STP file and -> export .UNV file
-3. Copy UNV file i a prepared case folder and run in terminal: -> ideasUnvToFoam meshname.unv
-4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file (for turbulent simulations)
+1. Create a Geometry in FreeCAD or any other CAD Application -> export .STP file (https://www.youtube.com/watch?v=yDRQf7fcAlg)
+2. Generate a Mesh in Salome by importing STP file and -> export .UNV file (https://www.youtube.com/watch?v=mnj0UcPItu8)
+3. Copy UNV file i a prepared case folder and run in terminal: -> ideasUnvToFoam meshname.unv 
+4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file for turbulent simulations (https://www.youtube.com/watch?v=E0AzNABWrow)
 5. Run case in terminal in the root case folder: -> interFoam
 6. Visualize case in a second terminal in the root case folder: -> paraFoam
 
