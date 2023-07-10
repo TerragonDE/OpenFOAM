@@ -1,7 +1,7 @@
 # OpenFOAM
 Sample OpenFOAM Cases
 
-Workflow: 
+### Workflow
 1. Create a Geometry in FreeCAD or any other CAD Application -> export .STP file
 2. Generate a Mesh in Salome by importing STP file and -> export .UNV file
 3. Copy UNV file i a prepared case folder and run in terminal: -> ideasUnvToFoam meshname.unv
@@ -9,11 +9,17 @@ Workflow:
 5. Run case in terminal in the root case folder: -> interFoam
 6. Visualize case in a second terminal in the root case folder: -> paraFoam
 
-All cases are built on:
+### Cases
 1. Mesh with face-names "inlet", "outlet" and "walls"
 2. Gravity in z-axis
 3. Only water and air phases
 4. "turbulenceProperties" is renamed to "momentumTransport" since OpenFOAM v10. content stays the same!
+
+### Salome
+- Stable courant number depends mainly on meshSize vs. timeStep
+- 0.002 max. size in Salome
+- 0.001 min. size in Salome
+- then use controlDict timeStep 0.001 in OpenFoam
 
 Dimensions Vector in every file: [kg m s K mol A cd]:
 - MASS 	kilogram 	kg
@@ -42,7 +48,4 @@ Smoother is another name for sparse linear solver like Jacobi, Gauss Seidel and 
 It is called smoother because we do not use this to solve the linear system but rather quickly remove some part of error.
 Other than Jacobi, openfoam also uses ILU based smoother. 
 
-Salome Mesh
-- 0.002 max. size
-- 0.001 min. size
-- then use controlDict timeStep 0.001
+
