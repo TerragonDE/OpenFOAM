@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];                    // L / T = Velocity
+
+internalField   uniform (0 0 0);                      // This means that the entire domain initially has a value of (0 0 0) for each component of the vector.
+
+boundaryField
+{
+    inlet
+    {
+        type       surfaceNormalFixedValue;
+        refValue   uniform -0.003125;               // "surfaceNormalFixedValue Specifies a vector boundary condition, normal to the patch, by its magnitude; 
+                                                    // +ve for vectors pointing out of the domain"
+                                                    // thus I use the sign of "-" to mean pointing in of the domain.
+    }
+
+    outlet
+    {
+        type            zeroGradient;                // This condition assumes that there is no change in the velocity across the outlet boundary.
+    }
+
+    walls
+    {
+        type            noSlip;                      // This condition assumes that the velocity at the boundary is zero, indicating a no-slip condition.
+    }
+}
+
+
+// ************************************************************************* //
