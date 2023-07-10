@@ -26,7 +26,7 @@ boundaryField
     
     inlet
     {
-        type       fixedFluxPressure;      // This condition sets the flux of the scalar (pressure) at the boundary to a fixed value.
+        type       fixedFluxPressure;      // This condition sets the flux of the scalar (pressure) at the boundary to a fixed value. ﬁxedFluxPressure is used for pressure in situations where zeroGradient is generally used, but where body forces such as gravity and surface tension are present in the solution equations. The condition adjusts the gradient accordingly. 
         value      uniform 0;              // Specifies the value of the scalar (pressure) at the "inlet" boundary. 
     }
 
