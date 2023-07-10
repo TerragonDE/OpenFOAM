@@ -34,6 +34,7 @@ boundaryField
     {
         type       prghTotalPressure;      // Solver applications which include buoyancy eﬀects, though a gravitational force eqn (per unit volume) source term, tend to solve for a pressure ﬁeld eqn, where the hydrostatic component is subtracted based on a height eqn above some reference. For such solvers, e.g. interFoam, an equivalent prghTotalPressure condition is applied (can also be totalPressure)
         p0         uniform 0;
+        value      uniform 0;              // only for paraFoam
     }
 
     walls
