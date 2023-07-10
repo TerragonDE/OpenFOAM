@@ -1,7 +1,10 @@
 # OpenFOAM
 Sample OpenFOAM Cases
 
-All cases expect the names "inlet", "outlet" and "walls" in the mesh and use only water and air.
+All cases are built on:
+1. Mesh with face-names "inlet", "outlet" and "walls"
+2. Gravity in z-axis
+3. Only water and air phases
 
 Workflow: 
 1. Create a Geometry in FreeCAD or any other CAD Application, export STP file
@@ -10,6 +13,7 @@ Workflow:
 4. Run case in terminal in the root case folder: interFoam
 5. Visualize case in a second terminal in the root case folder: paraFoam
 
+-- General
 OpenFOAM boundary conditions overview:
 https://www.openfoam.com/documentation/user-guide/a-reference/a.4-standard-boundary-conditions
 
