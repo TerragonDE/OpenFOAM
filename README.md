@@ -1,7 +1,7 @@
 # OpenFOAM
 Sample OpenFOAM Cases
 
-All cases expect the names "inlet", "outlet" and "walls" in the mesh.  
+All cases expect the names "inlet", "outlet" and "walls" in the mesh and use only water and air.
 
 Workflow: 
 1. Create a Geometry in FreeCAD or any other CAD Application, export STP file
