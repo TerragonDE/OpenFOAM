@@ -1,0 +1,38 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+|
+\\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (water air);              // Specifies the phases present in the simulation. In this case, there are two phases, water 0 and air 1.
+
+water
+{
+    transportModel  Newtonian;    // Specifies the transport model for the water phase as Newtonian.
+    nu              1e-06;        // Specifies the kinematic viscosity (nu) of water in m²/s.
+    rho             1000;         // Specifies the density (rho) of water in kg/m³.
+}
+
+air
+{
+    transportModel  Newtonian;
+    nu              1.48e-05;
+    rho             1;
+}
+
+sigma           0.07;               // Specifies the interfacial tension (sigma) between the water and air phases in N/m.
+
+
+// ************************************************************************* //
