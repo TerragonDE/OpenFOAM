@@ -25,6 +25,7 @@ boundaryField
     {
         type            inletOutlet;       // Specifies the type of boundary condition for the "inlet" as an "inletOutlet" type. This type allows the flow to act as both an inlet and an outlet.
         inletValue      uniform 1;         // Sets the inlet value to a uniform value of 1. This is the value assigned to the variable at the "inlet" boundary.
+        value           uniform 1;        // "value" is not used by OpenFOAM, it is just needed to load the case in ParaView. Sometimes ParaView does not know the boundary condition it fails to load the field
     }
 
     outlet
