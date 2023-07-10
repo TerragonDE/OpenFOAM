@@ -14,6 +14,9 @@ Workflow:
 5. Visualize case in a second terminal in the root case folder: paraFoam
 
 -- General
+
+file turbulenceProperties is renamed to momentumTransport since OpenFOAM v10. content is the same!
+
 OpenFOAM boundary conditions overview:
 https://www.openfoam.com/documentation/user-guide/a-reference/a.4-standard-boundary-conditions
 
