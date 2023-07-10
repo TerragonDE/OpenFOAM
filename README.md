@@ -41,3 +41,8 @@ Smoother
 Smoother is another name for sparse linear solver like Jacobi, Gauss Seidel and all.
 It is called smoother because we do not use this to solve the linear system but rather quickly remove some part of error.
 Other than Jacobi, openfoam also uses ILU based smoother. 
+
+Salome Mesh
+- 0.002 max. size
+- 0.001 min. size
+- then use controlDict timeStep 0.001
