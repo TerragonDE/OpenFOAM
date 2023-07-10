@@ -23,7 +23,7 @@ startTime       0;                     // only if startTime is set above
 stopAt          endTime;        
 endTime         30;                    // only if endTime is set above
 
-deltaT          0.0001;                 // Time step of the simulation. Time step can be too large to stay stable. As the Courant number grows, and with a fixed mesh, all that can change is the timestep. Try limiting the value that the courant number can reach, in essence setting a maximum timestep value, for stability.
+deltaT          0.001;                 // initial time step size, orients on the smalles mesh? 0.002 in Salome?
 maxDeltaT       0.005;                 // not in v10 book, if adjustTimeStep is on (below)
 
 writeControl    adjustableRunTime;
