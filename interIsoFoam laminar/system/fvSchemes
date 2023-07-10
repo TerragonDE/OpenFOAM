@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes  // Starts the section for specifying the schemes for time derivatives.
+{
+    default         Euler;              // Specifies the scheme for the time derivative as Euler. It is the default scheme used for time integration
+}
+
+gradSchemes                            // Starts the section for specifying the schemes for gradients
+{
+    default         Gauss linear;      // Specifies the scheme for the gradient as Gauss linear. It uses a linear interpolation scheme for gradient calculations
+}
+
+divSchemes                             // Starts the section for specifying the schemes for divergences
+{
+    div(rhoPhi,U)   Gauss linearUpwind grad(U);          // Specifies the scheme for the divergence of rhoPhi multiplied by U as Gauss linearUpwind grad(U). It combines a linearUpwind scheme for the divergence term and a linear interpolation scheme for the gradient term.
+    div(phi,alpha)  Gauss vanLeer;                      // Specifies the scheme for the divergence of phi multiplied by alpha as Gauss vanLeer. It uses the vanLeer interpolation scheme for the divergence term.
+    div(phirb,alpha) Gauss linear;                      // Specifies the scheme for the divergence of phirb multiplied by alpha as Gauss linear. It uses a linear interpolation scheme for the divergence term.
+    div(rhoPhi,k)      Gauss upwind;                    // Specifies the scheme for the divergence of rhoPhi multiplied by k as Gauss upwind. It uses an upwind scheme for the divergence term.
+    div(rhoPhi,epsilon) Gauss upwind;                   // Specifies the scheme for the divergence of rhoPhi multiplied by epsilon as Gauss upwind. It uses an upwind scheme for the divergence term.
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;   // Specifies the scheme for the divergence of ((rho*nuEff)*dev2(T(grad(U)))) as Gauss linear. It uses a linear interpolation scheme for the divergence term.
+}
+
+laplacianSchemes                                       // Starts the section for specifying the schemes for laplacians.
+{
+    default         Gauss linear orthogonal;           // Specifies the scheme for the laplacian as Gauss linear orthogonal. It combines a linear scheme with an orthogonal correction for the laplacian term.
+}
+
+interpolationSchemes                                   // Starts the section for specifying the schemes for interpolations.
+{
+    default         linear;                             // Specifies the scheme for interpolation as linear. It uses linear interpolation for data interpolation.
+}
+
+snGradSchemes                                          // Starts the section for specifying the schemes for surface normal gradients.
+{
+    default         orthogonal;                        // Specifies the scheme for the surface normal gradient as orthogonal. It uses an orthogonal interpolation scheme for surface normal gradients.
+}
+
+
+// ************************************************************************* //
