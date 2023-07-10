@@ -30,9 +30,9 @@ boundaryField
 
     outlet
     {
-        type            pressureInletOutletVelocity;  // The pressureInletOutletVelocity condition speciﬁes zeroGradient at all times, except on the tangential component which is set to ﬁxedValue for inﬂow, with the tangentialVelocity defaulting to 0. 
+        type            pressureInletOutletVelocity;  // speciﬁes zeroGradient at all times, except on the tangential component which is set to ﬁxedValue for inﬂow, with the tangentialVelocity defaulting to 0. 
         value           uniform (0 0 0);              // (not necessary if zeroGradient) zeroGradient assumes that there is no change in the velocity across the outlet boundary.
-    }
+    }                                                 // p_rgh outlet type should be corresponding totalPressure
 
     walls
     {
