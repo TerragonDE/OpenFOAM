@@ -43,3 +43,10 @@ boundaryField
 }
 
 // ************************************************************************* //
+
+
+// The pressure outlet boundary condition defines an outflow condition based on the flow pressure (P) at the outlet. 
+// This is usually used when there is a flow rate (or velocity), or a higher pressure assigned at the inlet.
+// https://www.simscale.com/docs/simulation-setup/boundary-conditions/pressure-inlet-and-pressure-outlet/
+// https://en.wikipedia.org/wiki/Boundary_conditions_in_fluid_dynamics
+// https://fse.studenttheses.ub.rug.nl/21242/1/mAppM_2019_ScholteSIO.pdf - Projekt mit Open channel Flow
