@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];        // M1 L-1 T -2 dimension of pressure
+                                          // The first value, 1, corresponds to the dimension of mass (M). It is set to 1, indicating that the variable has units of mass (M).
+                                          // The second value, -1, corresponds to the dimension of length (L). It is set to -1, indicating that the variable has units of length inverse (L⁻¹).
+                                          // The third value, -2, corresponds to the dimension of time (T). It is set to -2, indicating that the variable has units of time inverse squared (T⁻²).
+
+internalField   uniform 0;                // 0 = No pressure in the whole domain in the beginning
+
+boundaryField
+{
+    
+    inlet
+    {
+        type       fixedFluxPressure;      // This condition sets the flux of the scalar (pressure) at the boundary to a fixed value.
+        value      uniform 0;              // Specifies the value of the scalar (pressure) at the "inlet" boundary. 
+    }
+
+    outlet
+    {
+        type          totalPressure;
+        p0            uniform 0;
+    }
+
+    walls
+    {
+        type            zeroGradient;        // zeroGradient boundary condition that is normally imposed for pressure at wall, when no-slip velocity is imposed
+    }
+}
+
+// ************************************************************************* //
