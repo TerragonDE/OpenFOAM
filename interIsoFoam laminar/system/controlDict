@@ -15,43 +15,40 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     interIsoFoam;
+application     interIsoFoam;          // run by typing interFoam
 
-startFrom       startTime;
+startFrom       latestTime;            // Most recent time step from the set of time directories. can also be startTime
+startTime       0;                     // only if startTime is set above
 
-startTime       0;
+stopAt          endTime;        
+endTime         30;                    // only if endTime is set above
 
-stopAt          endTime;
+deltaT          0.001;                 // Time step of the simulation
+maxDeltaT       0.001;                 // not in v10 book, if adjustTimeStep is on (below)
 
-endTime         30;
-
-deltaT          0.001;
-
-writeControl    adjustable;
-
+writeControl    adjustableRunTime;
 writeInterval   1;
+purgeWrite      0;                    // 0 = no folders will be overwritten
 
-purgeWrite      0;
+writeFormat     ascii;                // ASCII format, written to writePrecision signiﬁcant ﬁgures.
+writePrecision  6;                    // Integer used in conjunction with writeFormat described above, 6 by default.
 
-writeFormat     ascii;
+writeCompression off;                 // ﬁles are compressed with gzip when written: on/off (yes/no, true/false)
 
-writePrecision  6;
+timeFormat      general;              // general (default): Speciﬁes scientific format if the exponent is less than -4 or greater than or equal to that speciﬁed by timePrecision.
+timePrecision   6;                    // Integer used in conjunction with timeFormat described above, 6 by default.
 
-writeCompression off;
+runTimeModifiable yes;                // Switch for whether dictionaries, e.g.controlDict, are re-read during a simulation at the beginning of each time step, allowing the user to modify parameters during a simulation.
 
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable yes;
-
-adjustTimeStep  on;
-
-maxCo           1;
-
-maxAlphaCo      1;
-
-maxDeltaT       0.001;
-
+adjustTimeStep  on;                    // Switch used by some solvers to adjust the time step during the simulation, usually according to maxCo.
+maxCo           1;                     // Maximum Courant number, e.g. 0.5, maxCo is a more general parameter that applies to various flow variables, including velocity, pressure, and scalar fields.
+maxAlphaCo      1;                     // not in v10 book, maxAlphaCo is specifically used for the phase fraction (alpha) transport equation. It limits the time step size based on the change in the phase fraction within a single time step.
 
 // ************************************************************************* //
+
+// writeControl
+// timeStep: Writes data every writeInterval time steps.
+// runTime: Writes data every writeInterval seconds of simulated time.
+// adjustableRunTime: Writes data every writeInterval seconds of simulated time, adjusting the time steps to coincide with the writeInterval if necessary — used in cases with automatic time step adjustment.
+// cpuTime: Writes data every writeInterval seconds of CPU time.
+// clockTime: Writes data out every writeInterval seconds of real time.
