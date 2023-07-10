@@ -20,14 +20,14 @@ solvers
     "alpha.water.*"                              // Specifies the solver settings for the field variable alpha.water.*, where * represents any subfield under alpha.water.
     {
         isoFaceTol      1e-10;                    // Specifies the tolerance for the isosurface face calculation.
-        surfCellTol     1e-6; // Specifies the tolerance for the surface cell calculation
-        nAlphaBounds    3; // Specifies the number of alpha bounds
-        snapTol         1e-12; // Specifies the tolerance for snapping of faces
-        clip            true; // Specifies whether clipping is enabled or not
-        writeSurfCells  false; // Specifies whether to write surface cells or not
-        writeBoundedCells false; // Specifies whether to write bounded cells or not
-        writeIsoFaces   false; // Specifies whether to write isosurface faces or not
-        reconstructionScheme plicRDF; // Specifies the reconstruction scheme for isoAlpha
+        surfCellTol     1e-6;                     // Specifies the tolerance for the surface cell calculation
+        nAlphaBounds    3;                        // Specifies the number of alpha bounds
+        snapTol         1e-12;                    // Specifies the tolerance for snapping of faces
+        clip            true;                     // Specifies whether clipping is enabled or not
+        writeSurfCells  false;                    // Specifies whether to write surface cells or not
+        writeBoundedCells false;                  // Specifies whether to write bounded cells or not
+        writeIsoFaces   false;                    // Specifies whether to write isosurface faces or not
+        reconstructionScheme plicRDF;             // Specifies the reconstruction scheme for isoAlpha
 
         nAlphaCorr      1; // Specifies the number of alpha corrections
         nAlphaSubCycles 1; // Specifies the number of alpha sub-cycles
@@ -36,16 +36,16 @@ solvers
 
     p_rgh
     {
-        solver          GAMG;  // Specifies the solver type as GAMG (Geometric Algebraic MultiGrid)
-        tolerance       1e-08;  // Specifies the convergence tolerance for the solver
-        relTol          0.01;  // Specifies the relative tolerance for the solver
-        smoother        DIC; // Specifies the smoother type as DIC (Damped Jacobi)
-        cacheAgglomeration no; // Specifies whether cache agglomeration is enabled or not
+        solver          GAMG;              // Specifies the solver type as GAMG (Geometric Algebraic MultiGrid)
+        tolerance       1e-08;             // Specifies the convergence tolerance for the solver
+        relTol          0.01;              // Specifies the relative tolerance for the solver
+        smoother        DIC;               // Specifies the smoother type as DIC (Damped Jacobi)
+        cacheAgglomeration no;             // Specifies whether cache agglomeration is enabled or not
     }
 
     p_rghFinal
     {
-        $p_rgh;                      // Inherits the settings from the previous p_rgh solver
+        $p_rgh;                            // Inherits the settings from the previous p_rgh solver
         tolerance       1e-9;
         relTol          0;
 
@@ -53,29 +53,33 @@ solvers
 
     "pcorr.*"
     {
-        $p_rghFinal;                // Inherits the settings from the previous p_rghFinal solver
+        $p_rghFinal;                        // Inherits the settings from the previous p_rghFinal solver
         tolerance       1e-08;
     }
 
     U
     {
-        solver          smoothSolver;    // Specifies the solver type as smoothSolver
-        smoother        GaussSeidel;    // Specifies the smoother type as GaussSeidel.
+        solver          smoothSolver;        // Specifies the solver type as smoothSolver
+        smoother        GaussSeidel;         // Specifies the smoother type as GaussSeidel.
         tolerance       1e-07;
         relTol          0;
-        nSweeps         1;    // Specifies the number of sweeps for the solver.
+        nSweeps         1;                   // Specifies the number of sweeps for the solver.
     }
 
-    "(k|omega|B|nuTilda).*"            // Specifies the solver settings for field variables starting with "k", "omega", "B", or "nuTilda".
+    "(k|omega|B|nuTilda).*"                  // Specifies the solver settings for field variables starting with "k", "omega", "B", or "nuTilda".
     {
         solver          smoothSolver;
-        smoother        symGaussSeidel;    // Specifies the smoother type as symGaussSeidel.
+        smoother        symGaussSeidel;      // Specifies the smoother type as symGaussSeidel.
         tolerance       1e-08;
         relTol          0;
     }
 }
 
-PIMPLE
+
+
+
+// PIMPLE settings (Pressure-Implicit with Splitting of Operators)
+PIMPLE                
 {
     momentumPredictor   no;
     nOuterCorrectors    1;
@@ -83,11 +87,16 @@ PIMPLE
     nNonOrthogonalCorrectors 0;
 }
 
-relaxationFactors
+
+
+// Relaxation factors control the under-relaxation of the solution. 
+// This is a technique used for improving the stability of a calculation, 
+// especially in solving steady-state analysis, where the first iterations are critical.
+relaxationFactors            
 {
     equations
     {
-        ".*"                1;
+        ".*"                1;                // Specifies a relaxation factor of 1 for all equations.
     }
 }
 
