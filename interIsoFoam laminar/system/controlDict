@@ -27,7 +27,7 @@ deltaT          0.001;                 // Time step of the simulation
 maxDeltaT       0.001;                 // not in v10 book, if adjustTimeStep is on (below)
 
 writeControl    adjustableRunTime;
-writeInterval   1;
+writeInterval   0.05;
 purgeWrite      0;                    // 0 = no folders will be overwritten
 
 writeFormat     ascii;                // ASCII format, written to writePrecision signiﬁcant ﬁgures.
