@@ -9,7 +9,7 @@ FoamFile
 {
     format      ascii;
     class       volScalarField;
-    object      alpha.fuel;
+    object      alpha.water;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
