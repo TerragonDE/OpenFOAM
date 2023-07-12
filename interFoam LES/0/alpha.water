@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    object      alpha.fuel;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];           // kg m s K mol A cd
+
+internalField   uniform 0;                 // initially air in the entire domain - we will change that with setFields! Sets the internal (initial) field of the alpha.water to a uniform value of 0.
+
+boundaryField
+{
+    inlet
+    
+    {
+        type            inletOutlet;       // This boundary condition provides a generic outflow condition, with specified inflow for the case of return flow.
+        inletValue      uniform 1;         // Sets the inlet value to a uniform value of 1. This is the value assigned to the variable at the "inlet" boundary.
+        value           uniform 1;         // "value" is not used by OpenFOAM, it is just needed to load the case in ParaView. Sometimes ParaView does not know the boundary condition it fails to load the field
+    }
+
+    outlet
+    {
+        type            inletOutlet;       // The inletOutlet condition is one derived from mixed, which switches between zeroGradient when the ﬂuid ﬂows out of the domain at a patch face, and ﬁxedValue, when the ﬂuid is ﬂowing into the domain. For inﬂow, the inlet value is speciﬁed by an inletValue entry. (can also be zeroGradient, no gradient with free outflow)  
+        inletValue      uniform 0;         // Where there is outﬂow, the condition is well posed, where there is inﬂow, the phase fraction is ﬁxed with a value of 0, corresponding to 100% air.
+        value           uniform 0;
+    }
+
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+
+// ************************************************************************* //
