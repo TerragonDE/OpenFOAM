@@ -10,14 +10,14 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      p_rgh;
+    object      p_rgh;                    // p_rgh = p - rho*gh; that means that the alternative p file = p_rgh + rho*gh; 
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [1 -1 -2 0 0 0 0];        // kg m s K mol A cd = M1 L-1 T -2 dimension of pressure
-                                          // The first value, 1, corresponds to the dimension of mass (M). It is set to 1, indicating that the variable has units of mass (M).
-                                          // The second value, -1, corresponds to the dimension of length (L). It is set to -1, indicating that the variable has units of length inverse (L⁻¹).
-                                          // The third value, -2, corresponds to the dimension of time (T). It is set to -2, indicating that the variable has units of time inverse squared (T⁻²).
+                                          // Mass (M). It is set to 1, indicating that the variable has units of mass (M).
+                                          // length (L). It is set to -1, indicating that the variable has units of length inverse (L⁻¹).
+                                          // time (T). It is set to -2, indicating that the variable has units of time inverse squared (T⁻²).
 
 internalField   uniform 0;                // 0 = No pressure in the whole domain in the beginning
 
@@ -26,20 +26,23 @@ boundaryField
     
     inlet
     {
-        type       fixedFluxPressure;      // This condition sets the flux of the scalar (pressure) at the boundary to a fixed value. ﬁxedFluxPressure is used for pressure in situations where zeroGradient is generally used, but where body forces such as gravity and surface tension are present in the solution equations. The condition adjusts the gradient accordingly. 
-        value      uniform 0;              // Specifies the value of the scalar (pressure) at the "inlet" boundary. 
+        type       fixedFluxPressure;      // ﬁxedFluxPressure is used for pressure in situations where zeroGradient is generally used,  
+                                           // but where body forces such as gravity and surface tension are present in the solution equations. The condition adjusts the gradient accordingly.
+        value      uniform 0;              // 0 = no pressure at the inlet in the beginning
     }
 
     outlet
     {
-        type       prghTotalPressure;      // Solver applications which include buoyancy eﬀects, though a gravitational force eqn (per unit volume) source term, tend to solve for a pressure ﬁeld eqn, where the hydrostatic component is subtracted based on a height eqn above some reference. For such solvers, e.g. interFoam, an equivalent prghTotalPressure condition is applied (can also be totalPressure)
+        type       prghTotalPressure;      // Solver applications which include buoyancy eﬀects, though a gravitational force eqn (per unit volume) source term, 
+                                           // tend to solve for a pressure ﬁeld eqn, where the hydrostatic component is subtracted based on a height eqn above some reference. 
+                                           // For such solvers, e.g. interFoam, an equivalent prghTotalPressure condition is applied (can also be totalPressure)
         p0         uniform 0;
         value      uniform 0;              // only for paraFoam
     }
 
     walls
     {
-        type       zeroGradient;        // zeroGradient boundary condition that is normally imposed for pressure at wall, when no-slip velocity is imposed
+        type       zeroGradient;           // zeroGradient boundary condition that is normally imposed for pressure at wall, when no-slip velocity is imposed
     }
 }
 
