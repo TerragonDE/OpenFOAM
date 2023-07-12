@@ -23,9 +23,9 @@ boundaryField
     inlet
     {
         type       surfaceNormalFixedValue;
-        refValue   uniform -0.3;                    // 0.3 m/s surfaceNormalFixedValue Specifies a vector boundary condition, normal to the patch, 
-        value      uniform (0 0 0);                 // +ve for vectors pointing out of the domain"
-                                                    // thus I use the sign of "-" to mean pointing in of the domain. 
+        refValue   uniform -0.3;                    // velocity in m/s, surfaceNormalFixedValue Specifies a vector boundary condition, normal to the patch, 
+        value      uniform (0 0 0);                 // +ve for vectors pointing out of the domain". thus I use the sign of "-" to mean pointing in of the domain.
+                                                    // v in m/s = Q / A = 0.001 m3/s / (3.14 * radius m * radius m)  (0.001 = 1 l/s)
     }
 
     outlet
