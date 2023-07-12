@@ -37,7 +37,7 @@ boundaryField
 
     walls
     {
-        type            zeroGradient;
+        type            zeroGradient;      // means that the gradient (rate of change) of that quantity is zero at the boundary.
     }
 }
 
