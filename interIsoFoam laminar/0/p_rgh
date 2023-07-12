@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];        // M1 L-1 T -2 dimension of pressure
+dimensions      [1 -1 -2 0 0 0 0];        // kg m s K mol A cd = M1 L-1 T -2 dimension of pressure
                                           // The first value, 1, corresponds to the dimension of mass (M). It is set to 1, indicating that the variable has units of mass (M).
                                           // The second value, -1, corresponds to the dimension of length (L). It is set to -1, indicating that the variable has units of length inverse (L⁻¹).
                                           // The third value, -2, corresponds to the dimension of time (T). It is set to -2, indicating that the variable has units of time inverse squared (T⁻²).
