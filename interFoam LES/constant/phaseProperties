@@ -1,0 +1,23 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      phaseProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (water air);              // Specifies the phases present in the simulation. In this case, there are two phases, water 0 and air 1.
+
+sigma           0.072;              // Specifies the interfacial tension (sigma) between the water and air phases in N/m.
+                                    // Once you have a different system like water-oil you have to use measured values for this system.
+
+
+// ************************************************************************* //
