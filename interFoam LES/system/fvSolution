@@ -22,7 +22,7 @@ solvers
         nAlphaSubCycles 4;
     }
 
-    "pcorr.*"
+    "pcorr.*"      // The pcorr field is generally used for flux correction when the mesh changes (i.e. a dynamic simulation). See e.g. CorrectPhi.
     {
         solver          PCG;
         preconditioner
