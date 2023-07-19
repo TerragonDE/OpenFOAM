@@ -64,6 +64,8 @@ non-orthogonality (nO) is a very important parameter, we can define three ranges
 - 70 41 nO < 90 – require special treatment of , e.g., nonOrthoCorrectors in fvSolution or numerical schemes in fvSchemes
 - nO 42 9O – bad mesh, which can not be used for simulation
 
+More mesh-related functions:
+
 - refineMesh //berechnet das mesh neu, behebt aber keine fehler im mesh
 - renumberMesh   // the mesh is re-written using the write format settings in your controlDict (binary oder ascii)
 - transformPoints -translate '(1 0 0)' // bewegt das mesh in xyz richtung, einheit meter?
