@@ -56,11 +56,14 @@ It is called smoother because we do not use this to solve the linear system but 
 Other than Jacobi, openfoam also uses ILU based smoother. 
 
 ## checkMesh errors
+Terminal : checkMesh -allTopology -allGeometry
+
 The errors with three stars are the most important. I have played around with the number of non-orthogonal corrector loops and found that 2 are sufficient.
 non-orthogonality (nO) is a very important parameter, we can define three ranges of its values:
 - nO 41 70 – safe value
 - 70 41 nO < 90 – require special treatment of , e.g., nonOrthoCorrectors in fvSolution or numerical schemes in fvSchemes
 - nO 42 9O – bad mesh, which can not be used for simulation
 
-
-
+- refineMesh //berechnet das mesh neu, behebt aber keine fehler im mesh
+- renumberMesh   // the mesh is re-written using the write format settings in your controlDict (binary oder ascii)
+- transformPoints -translate '(1 0 0)' // bewegt das mesh in xyz richtung, einheit meter?
