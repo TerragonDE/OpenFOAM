@@ -55,4 +55,11 @@ Smoother is another name for sparse linear solver like Jacobi, Gauss Seidel and 
 It is called smoother because we do not use this to solve the linear system but rather quickly remove some part of error.
 Other than Jacobi, openfoam also uses ILU based smoother. 
 
+## checkMesh errors
+non-orthogonality (nO) is a very important parameter, we can define three ranges of its values:
+    nO 41 70 – safe values
+    70 41 nO < 90 – require special treatment of , e.g., nonOrthoCorrectors in fvSolution or numerical schemes in fvSchemes
+    nO 42 9O – bad mesh, which can not be used for simulation
+The errors with three stars are the most important.
+I have played around with the number of non-orthogonal corrector loops and found that 2 are sufficient.
 
