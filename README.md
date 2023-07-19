@@ -16,6 +16,7 @@ https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 2. Gravity is applied in minus z-axis direction
 3. Only water and air phases are defined in the cases
 4. "turbulenceProperties" is renamed to "momentumTransport" since OpenFOAM v10. content stays the same, so you need to rename the file according to your OpenFOAM Version!
+5. Calculate l/s in m/s for a surface: $w = ($Q / 1000 ) / (A); example: 4,5 l/s through  0,9 m2 = 0,005 m/s velocity
 
 ## boundary file in constant/polyMesh/ 
 After importing the UNV file with ideasUnvToFoam you need to rename the Patch type of "walls" to "wall"!
@@ -69,3 +70,5 @@ More mesh-related functions:
 - refineMesh // recalculates the mesh, but does not reduce mesh errors
 - renumberMesh   // the mesh is re-written using the write format settings in your controlDict (binary oder ascii)
 - transformPoints -translate '(1 0 0)' // moves the mesh in xyz direction, dimension is meter
+
+Right Hand Rule in blockMesh: order of points in a face = Thumb is flow direction (inside or outside)!
