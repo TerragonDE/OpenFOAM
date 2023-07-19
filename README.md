@@ -66,6 +66,6 @@ non-orthogonality (nO) is a very important parameter, we can define three ranges
 
 More mesh-related functions:
 
-- refineMesh //berechnet das mesh neu, behebt aber keine fehler im mesh
+- refineMesh // recalculates the mesh, but does not reduce mesh errors
 - renumberMesh   // the mesh is re-written using the write format settings in your controlDict (binary oder ascii)
-- transformPoints -translate '(1 0 0)' // bewegt das mesh in xyz richtung, einheit meter?
+- transformPoints -translate '(1 0 0)' // moves the mesh in xyz direction, dimension is meter
