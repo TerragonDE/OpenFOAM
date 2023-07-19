@@ -6,7 +6,7 @@ https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 # My Workflow
 1. (1) https://www.youtube.com/watch?v=yDRQf7fcAlg : Create a Geometry in FreeCAD -> export .stp file
 2. (2) https://www.youtube.com/watch?v=mnj0UcPItu8 : Generate a Mesh in Salome, import .stp file -> export .unv file
-3. (3) https://www.youtube.com/watch?v=E0AzNABWrow : Copy .unv mesh in case folder and run in terminal -> ideasUnvToFoam meshname.unv 
+3. (3) https://www.youtube.com/watch?v=E0AzNABWrow : Copy .unv mesh in case folder and run -> ideasUnvToFoam meshname.unv 
 4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file for turbulent simulations
 5. Run the case in terminal in the root case folder: -> interFoam
 6. Visualize case in a second terminal in the root case folder: -> paraFoam
