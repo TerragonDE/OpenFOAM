@@ -25,6 +25,10 @@ After importing the UNV file with ideasUnvToFoam you need to rename the Patch ty
 
 # Details
 
+## instable error tipps
+
+- Lower your CO and maxDeltaT in system/controlDict (e.g. CO to 0.1 and maxDeltaT to 1e-4)
+
 ## meshSize vs. timeStep
 - A stable courant number depends mainly on meshSize vs. timeStep
 - 0.002 max. size in Salome
