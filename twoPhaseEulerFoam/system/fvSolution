@@ -75,7 +75,7 @@ relaxationFactors
 {
     equations
     {
-        ".*"            1;
+        ".*"            1;    // The under relaxation factor increases the stability while over relaxation increases the rate of convergence
     }
 }
 
