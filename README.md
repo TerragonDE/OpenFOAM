@@ -72,3 +72,11 @@ More mesh-related functions:
 - transformPoints -translate '(1 0 0)' // moves the mesh in xyz direction, dimension is meter
 
 Right Hand Rule in blockMesh: order of points in a face = Thumb is flow direction (inside or outside)!
+
+## relaxationFactors
+(system/fvSolution relaxationFactors)
+Under and over relaxation factors control the stability and convergence rate of the iterative process.
+The under relaxation factor increases the stability while over relaxation increases the rate of convergence.
+Generally start off without RF's then when solution becomes unstable later on bring them in where needed - whichever equations (residual graph) are unstable, 
+meaning not a nice smooth line but up and down rapidly. Start off moving down from 1 to 0.8 or 0.8 to 0.6 etc. 
+For energy equation start off with 0.9 it takes hundreds or thousands of iterations to converge with relaxation factors in.
