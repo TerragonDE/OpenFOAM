@@ -25,16 +25,12 @@ After importing the UNV file with ideasUnvToFoam you need to rename the Patch ty
 
 # Details
 
-## instable error tipps
-
-- Lower your CO and maxDeltaT in system/controlDict (e.g. CO to 0.1 and maxDeltaT to 1e-4)
-
 ## meshSize vs. timeStep
 - A stable courant number depends mainly on meshSize vs. timeStep
 - 0.002 max. size in Salome
 - 0.001 min. size in Salome
 - then use controlDict timeStep 0.001 in OpenFoam
-- choose a low maxCo value together with adjustable timeStep
+- choose a low maxCo and maxDeltaT value together with adjustable timeStep (e.g. CO to 0.1 and maxDeltaT to 1e-4)
 
 ## OpenFOAM Dimensions
 The Dimensions Vector in every file looks the same and means the following dimensions: [kg m s K mol A cd]:
