@@ -39,11 +39,6 @@ boundaryField
         type            epsilonWallFunction;
         value           $internalField;
     }
-
-    defaultFaces
-    {
-        type            empty;
-    }
 }
 
 
