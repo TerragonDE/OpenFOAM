@@ -4,15 +4,15 @@ Here you find some sample case files for the Series on my YouTube Channel:
 https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 
 # My Workflow
-1. (1) https://www.youtube.com/watch?v=yDRQf7fcAlg : Create a Geometry in FreeCAD -> export .stp file
-2. (2) https://www.youtube.com/watch?v=mnj0UcPItu8 : Generate a Mesh in Salome, import .stp file -> export .unv file
-3. (3) https://www.youtube.com/watch?v=E0AzNABWrow : Copy .unv mesh in case folder and run -> ideasUnvToFoam meshname.unv 
+1. (1) https://www.youtube.com/watch?v=gm6zOZSZLpA : Create a Geometry in FreeCAD -> export .stp file
+2. (2) https://www.youtube.com/watch?v=c9gge1AATgk : Generate a Mesh in Salome, import .stp file -> export .unv file
+3. (3) https://www.youtube.com/watch?v=jy3ux-mX20c : Copy .unv mesh in case folder and run -> ideasUnvToFoam meshname.unv 
 4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file for turbulent simulations
 5. Run the case in terminal in the root case folder: -> interFoam
 6. Visualize case in a second terminal in the root case folder: -> paraFoam
 
 ## My Case file Standards
-1. Mesh is generated with group-names "inlet", "outlet" and "walls"
+1. Mesh is generated with group-names "inlet", "outlet" and "walls" (define the atmosphere also as "outlet")
 2. Gravity is applied in minus z-axis direction
 3. Only water and air phases are defined in the cases
 4. "turbulenceProperties" is renamed to "momentumTransport" since OpenFOAM v10. content stays the same, so you need to rename the file according to your OpenFOAM Version!
