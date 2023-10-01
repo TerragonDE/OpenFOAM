@@ -14,17 +14,17 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
+ddtSchemes  // Starts the section for specifying the schemes for time derivatives.
 {
-    default         Euler;
+    default         Euler;              // Specifies the scheme for the time derivative as Euler. It is the default scheme used for time integration
 }
 
-gradSchemes
+gradSchemes                            // Starts the section for specifying the schemes for gradients
 {
-    default         Gauss linear;
+    default         Gauss linear;      // Specifies the scheme for the gradient as Gauss linear. It uses a linear interpolation scheme for gradient calculations
 }
 
-divSchemes
+divSchemes                             // Starts the section for specifying the schemes for divergences
 {
     div(rhoPhi,U)   Gauss linear;
     div(phi,alpha)  Gauss interfaceCompression vanLeer 1;
@@ -35,17 +35,17 @@ divSchemes
     div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
 }
 
-laplacianSchemes
+laplacianSchemes                                       // Starts the section for specifying the schemes for laplacians.
 {
     default         Gauss linear corrected;
 }
 
-interpolationSchemes
+interpolationSchemes                                   // Starts the section for specifying the schemes for interpolations.
 {
-    default         linear;
+    default         linear;                             // Specifies the scheme for interpolation as linear. It uses linear interpolation for data interpolation.
 }
 
-snGradSchemes
+snGradSchemes                                          // Starts the section for specifying the schemes for surface normal gradients.
 {
     default         corrected;
 }
