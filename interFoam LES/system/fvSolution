@@ -16,10 +16,10 @@ FoamFile
 
 solvers
 {
-    alpha.water
+    alpha.water                              // Specifies the solver settings for the field variable  ( optional: alpha.water.*, where * represents any subfield under alpha.water.)
     {
-        nAlphaCorr      1;
-        nAlphaSubCycles 4;
+        nAlphaCorr      1;                         // Specifies the number of alpha corrections
+        nAlphaSubCycles 4;                         // Specifies the number of alpha sub-cycles
     }
 
     "pcorr.*"      // The pcorr field is generally used for flux correction when the mesh changes (i.e. a dynamic simulation). See e.g. CorrectPhi.
@@ -39,10 +39,10 @@ solvers
 
     p_rgh
     {
-        solver          GAMG;
-        tolerance       1e-07;
-        relTol          0.01;
-        smoother        DIC;
+        solver          GAMG;              // Specifies the solver type as GAMG (Geometric Algebraic MultiGrid)
+        tolerance       1e-07;             // Specifies the convergence tolerance for the solver
+        relTol          0.01;              // Specifies the relative tolerance for the solver
+        smoother        DIC;               // Specifies the smoother type as DIC (Damped Jacobi)
     }
 
     p_rghFinal
@@ -82,9 +82,9 @@ solvers
 
 PIMPLE
 {
-    momentumPredictor no;
-    nCorrectors     2;
-    nNonOrthogonalCorrectors 1;
+    momentumPredictor no;               // typically set to off for some ﬂows, including low Reynolds number and multiphase.
+    nCorrectors     2;                //nCorrectors 3; this is the pressure correction step. so it solves the pressure 3 times. 
+    nNonOrthogonalCorrectors 1;           //default 0, may be 2, nNonOrthogonalCorrectors is number of pressure equation steps (zero means one step)
 }
 
 
