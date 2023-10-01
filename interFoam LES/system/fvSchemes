@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes  // Starts the section for specifying the schemes for time derivatives.
+ddtSchemes                              // Starts the section for specifying the schemes for time derivatives.
 {
     default         Euler;              // Specifies the scheme for the time derivative as Euler. It is the default scheme used for time integration
 }
@@ -26,13 +26,13 @@ gradSchemes                            // Starts the section for specifying the 
 
 divSchemes                             // Starts the section for specifying the schemes for divergences
 {
-    div(rhoPhi,U)   Gauss linear;
-    div(phi,alpha)  Gauss interfaceCompression vanLeer 1;
-    div(phi,k)      Gauss limitedLinear 1;
-    div(phi,B)      Gauss limitedLinear 1;
-    div(B)          Gauss linear;
-    div(phi,nuTilda) Gauss limitedLinear 1;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    div(rhoPhi,U)   Gauss linear;                          // divergence scheme for the product of the density (rho) and the scalar field phi, multiplied by the velocity vector U. It uses the Gauss linear scheme, which is a simple and commonly used scheme for calculating divergence.
+    div(phi,alpha)  Gauss interfaceCompression vanLeer 1;  // divergence scheme for the scalar field phi multiplied by the alpha field. It uses the Gauss scheme with interface compression and the vanLeer limiter with a factor of 1. These options are used to improve the accuracy and stability of the scheme near discontinuities or interfaces in the flow
+    div(phi,k)      Gauss limitedLinear 1;                 // divergence scheme for the scalar field phi multiplied by the turbulent kinetic energy (k). It uses the Gauss scheme with limited linear interpolation and a factor of 1. This scheme is used for modeling turbulence in CFD simulations
+    div(phi,B)      Gauss limitedLinear 1;                 // divergence scheme for the scalar field phi multiplied by the magnetic field B
+    div(B)          Gauss linear;                          // divergence scheme for the magnetic field B
+    div(phi,nuTilda) Gauss limitedLinear 1;                // divergence scheme for the scalar field phi multiplied by nuTilda. NuTilda is often used in turbulence modeling
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;      // complex expression involving the divergence of a quantity related to density (rho), effective viscosity (nuEff), and the second deviatoric derivative of the gradient of velocity (T(grad(U))). It also uses the Gauss linear scheme
 }
 
 laplacianSchemes                                       // Starts the section for specifying the schemes for laplacians.
@@ -42,7 +42,7 @@ laplacianSchemes                                       // Starts the section for
 
 interpolationSchemes                                   // Starts the section for specifying the schemes for interpolations.
 {
-    default         linear;                             // Specifies the scheme for interpolation as linear. It uses linear interpolation for data interpolation.
+    default         linear;                            // Specifies the scheme for interpolation as linear. It uses linear interpolation for data interpolation.
 }
 
 snGradSchemes                                          // Starts the section for specifying the schemes for surface normal gradients.
