@@ -14,24 +14,46 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType  LES;
+simulationType  LES;                          // LES modeling techniques to simulate turbulent flows
 
 LES
 {
-    model           kEqn;
+    model           kEqn;                     // k-equation model, which is a common turbulence model used in CFD simulations
 
-    turbulence      on;
+    turbulence      on;                       // resolving large turbulent structures and modeling the smaller ones
 
-    printCoeffs     on;
+    printCoeffs     on;                       // coefficients used in the turbulence model will be printed or output during the simulation, which can be useful for analysis and debugging
 
-    delta           smooth;
+    delta           smooth;                   // sets the delta (grid spacing or cell size) to be smooth, meaning that the grid spacing is assumed to be relatively uniform across the domain
 
-    cubeRootVolCoeffs
+    cubeRootVolCoeffs                         // settings related to the cube root of the cell volume
     {
-        deltaCoeff      1;
+        deltaCoeff      1;                    // sets a coefficient related to the cube root of the cell volume to 1. It likely affects the way the grid spacing is handled in certain calculations
     }
 
-    PrandtlCoeffs
+    PrandtlCoeffs                              // settings related to the Prandtl number, which is a dimensionless number often used in fluid mechanics
+    {
+        delta           cubeRootVol;          // indicates that the delta (grid spacing) is related to the cube root of the cell volume
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;                // sets a coefficient related to the cube root of the cell volume to 1
+        }
+
+        smoothCoeffs                          // settings for handling smooth coefficients
+        {
+            delta           cubeRootVol;
+            cubeRootVolCoeffs
+            {
+                deltaCoeff      1;
+            }
+
+            maxDeltaRatio   1.1;               // Specifies a maximum delta ratio of 1.1 for handling the cube root of the cell volume
+        }
+
+        Cdelta          0.158;                 // Cdelta coefficient, which is used in turbulence modeling
+    }
+
+    vanDriestCoeffs                             // van Driest damping, a technique used to reduce the effects of turbulence in near-wall regions
     {
         delta           cubeRootVol;
         cubeRootVolCoeffs
@@ -50,29 +72,7 @@ LES
             maxDeltaRatio   1.1;
         }
 
-        Cdelta          0.158;
-    }
-
-    vanDriestCoeffs
-    {
-        delta           cubeRootVol;
-        cubeRootVolCoeffs
-        {
-            deltaCoeff      1;
-        }
-
-        smoothCoeffs
-        {
-            delta           cubeRootVol;
-            cubeRootVolCoeffs
-            {
-                deltaCoeff      1;
-            }
-
-            maxDeltaRatio   1.1;
-        }
-
-        Aplus           26;
+        Aplus           26;                    // value for the Aplus coefficient, which is used in van Driest damping
         Cdelta          0.158;
     }
 
