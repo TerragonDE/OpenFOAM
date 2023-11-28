@@ -9,7 +9,8 @@ https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 3. (3) https://www.youtube.com/watch?v=jy3ux-mX20c : Copy .unv mesh in case folder and run -> ideasUnvToFoam meshname.unv 
 4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file for turbulent simulations
 5. Run the case in terminal in the root case folder: -> interFoam
-6. Visualize case in a second terminal in the root case folder: -> paraFoam
+6. Alternative: -> decomposePar and -> mpirun --allow-run-as-root -np 16 interFoam -parallel and -> reconstructPar
+8. Visualize case in a second terminal in the root case folder: -> paraFoam
 
 ## My Case file Standards
 1. Mesh is generated with group-names "inlet", "outlet" and "walls" (define the atmosphere also as "outlet")
