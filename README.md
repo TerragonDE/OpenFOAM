@@ -11,6 +11,8 @@ https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 5. Run the case in terminal in the root case folder: -> interFoam
 6. Alternative: -> decomposePar and -> mpirun --allow-run-as-root -np 16 interFoam -parallel and -> reconstructPar
 8. Visualize case in a second terminal in the root case folder: -> paraFoam
+9. Export Animation in paraFoam as .png Sequence Ani.0001.png
+10. Convert .png Sequence to .mp4 in ffmpeg -> ffmpeg -f image2 -i Ani.%4d.png -c:v libx264 -vb 20M output.mp4 (apt install ffmpeg parole xarchiver)
 
 ## My Case file Standards
 1. Mesh is generated with group-names "inlet", "outlet" and "walls" (define the atmosphere also as "outlet")
