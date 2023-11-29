@@ -9,7 +9,8 @@ https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
 3. (3) https://www.youtube.com/watch?v=jy3ux-mX20c : Copy .unv mesh in case folder and run -> ideasUnvToFoam meshname.unv 
 4. Change the type of "walls" from "patch" to "wall" in generated constant/polyMesh/boundary file for turbulent simulations
 5. Run the case in terminal in the root case folder: -> interFoam
-6. Alternative: -> decomposePar and -> mpirun --allow-run-as-root -np 16 interFoam -parallel and -> reconstructPar
+6. (4) https://www.youtube.com/watch?v=5u7_LPqYiuU : Running parallel on 8+ CPU cores
+7. Alternative: -> decomposePar and -> mpirun --allow-run-as-root -np 8 interFoam -parallel and -> reconstructPar
 8. Visualize case in a second terminal in the root case folder: -> paraFoam
 9. Export Animation in paraFoam as .png Sequence Ani.0001.png
 10. Convert .png Sequence to .mp4 in ffmpeg -> ffmpeg -f image2 -i Ani.%4d.png -c:v libx264 -vb 20M output.mp4 (apt install ffmpeg parole xarchiver)
