@@ -21,10 +21,22 @@ boundaryField
 {
     inlet
     {
+        // inlet with a constant flow
         type       surfaceNormalFixedValue;
         refValue   uniform -0.3;                    // 0.3 m/s surfaceNormalFixedValue Specifies a vector boundary condition, normal to the patch, 
                                                     // +ve for vectors pointing out of the domain"
                                                     // thus I use the sign of "-" to mean pointing in of the domain. 
+        // Alternative inlet with ramp
+        /*
+        type            flowRateInletVelocity;       // https://cpp.openfoam.org/v10/classFoam_1_1flowRateInletVelocityFvPatchVectorField.html
+        meanVelocity    table                        // Mean velocity [m/s]
+          (
+            (0.0 0.3)        // Start at timestep 0.0 with 0.3 m/s
+            (1.0 0.3)        // ramp until timestep 1.0 with 0.3 m/s (effectively keep the same)
+            (1.1 1.0)        // Ramp from timestep 1.0 with 0.3 m/s to timestep 1.1 with 1.0 m/s
+            (2.0 1.0)        // Ramp until timestep 2.0 with 1.0 m/s (effectively keep the same)
+          );
+        */
     }
 
     outlet
