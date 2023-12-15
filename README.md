@@ -1,7 +1,7 @@
 # OpenFOAM Case Files
 Here you find some sample case files for the Series on my YouTube Channel:
 
-https://www.youtube.com/playlist?list=PLeVTllFUlYNCt1H-08fAvwwvi1hJkKhDk
+https://www.youtube.com/playlist?list=PLMjS3lo58ggrdenSkpz1MrRSHv6a6tm7d
 
 # My Workflow
 1. (1) https://www.youtube.com/watch?v=gm6zOZSZLpA : Create a Geometry in FreeCAD -> export .stp file
