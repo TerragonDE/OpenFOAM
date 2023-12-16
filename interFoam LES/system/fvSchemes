@@ -16,12 +16,16 @@ FoamFile
 
 ddtSchemes                              // Starts the section for specifying the schemes for time derivatives.
 {
-    default         Euler;              // Specifies the scheme for the time derivative as Euler. It is the default scheme used for time integration
+    default         Euler;              // Most stable, Specifies the scheme for the time derivative as Euler. It is the default scheme used for time integration
+    //default        CrankNicolson  0.9;   // Stable/Accurate, 0 = Euler , 1 = 100% CrankNicolson, 0.9 = 10% Euler
+    //default        backward;          // Most accurate
 }
 
 gradSchemes                            // Starts the section for specifying the schemes for gradients
 {
-    default         Gauss linear;      // Specifies the scheme for the gradient as Gauss linear. It uses a linear interpolation scheme for gradient calculations
+    default         Gauss linear;                        // Specifies the scheme for the gradient as Gauss linear. It uses a linear interpolation scheme for gradient calculations
+    //default        cellMDLimited Gauss linear 1.0;    // Alternative default, Add limiter for stability
+    //grad(p)        leastSquares;                      //Optional, overrides default for pressure
 }
 
 divSchemes                             // Starts the section for specifying the schemes for divergences
@@ -47,7 +51,7 @@ interpolationSchemes                                   // Starts the section for
 
 snGradSchemes                                          // Starts the section for specifying the schemes for surface normal gradients.
 {
-    default         corrected;
+    default         corrected;                         // best for Max non-orthogonal < 70 deg, corrects the vectors out of cells in the mesh
 }
 
 // ************************************************************************* //
